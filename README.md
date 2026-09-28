@@ -16,43 +16,55 @@ Matrix-style "digital rain" for your terminal, written in a single C file with n
 
 ## Build
 
-You need a C compiler and a POSIX system (Linux, macOS, BSD, WSL, Termux).
+You need a C compiler and a POSIX system. Developed on Termux (Android) and tested on Linux. It should also work on macOS, BSD and WSL, but those are untested, so reports are welcome.
 
 ```sh
-git clone https://github.com/<your-username>/matrix.git
-cd matrix
-cc -O2 -Wall -Wextra -o matrix matrix.c
-./matrix
+git clone https://github.com/slashstroke/Termrain.git
+cd Termrain
+cc -O2 -Wall -Wextra -o termrain Termrain.c
+./termrain
 ```
 
 **Termux (Android):**
 
 ```sh
 pkg install clang git
-cc -O2 -o matrix matrix.c
-./matrix
+git clone https://github.com/slashstroke/Termrain.git
+cd Termrain
+cc -O2 -o termrain Termrain.c
+./termrain
+```
+
+**Optional: install it so you can run `termrain` from anywhere**
+
+```sh
+# Linux / macOS
+sudo cp termrain /usr/local/bin/
+
+# Termux
+cp termrain $PREFIX/bin/
 ```
 
 ## Usage
 
 ```
-matrix [options]
+termrain [options]
 ```
 
-| Option     | Description                                                   | Default |
-|------------|---------------------------------------------------------------|---------|
-| `-f FPS`   | Frames per second (1-120)                                     | `20`    |
-| `-s SPEED` | Speed multiplier (0.1-10)                                     | `1.0`   |
-| `-c COLOR` | `green` `red` `blue` `yellow` `cyan` `magenta` `white`        | `green` |
-| `-h`       | Show help                                                     |         |
-| `-v`       | Show version                                                  |         |
+| Option     | Description                                            | Default |
+|------------|--------------------------------------------------------|---------|
+| `-f FPS`   | Frames per second (1-120)                              | `20`    |
+| `-s SPEED` | Speed multiplier (0.1-10)                              | `1.0`   |
+| `-c COLOR` | `green` `red` `blue` `yellow` `cyan` `magenta` `white` | `green` |
+| `-h`       | Show help                                              |         |
+| `-v`       | Show version                                           |         |
 
 Examples:
 
 ```sh
-./matrix                    # classic green
-./matrix -c cyan -s 0.7     # slower, cyan
-./matrix -f 60 -s 2         # fast and very smooth
+./termrain                    # classic green
+./termrain -c cyan -s 0.7     # slower, cyan
+./termrain -f 60 -s 2         # fast and very smooth
 ```
 
 Quit with **q** or **Ctrl+C**.
@@ -68,7 +80,7 @@ Each screen column is an independent "drop" with its own position, speed and tai
 
 ## Tweaking
 
-A few constants at the top of `matrix.c` are worth playing with:
+A few constants at the top of `Termrain.c` are worth playing with:
 
 - `GLYPHS`: the character set used for the rain
 - `MUTATE_DIV`: how much the glyphs flicker (lower means more flicker)
@@ -81,7 +93,7 @@ A few constants at the top of `matrix.c` are worth playing with:
 
 ## Contributing
 
-Issues and pull requests are welcome. If you change behaviour, please compile with `-Wall -Wextra -Wpedantic` and make sure there are no new warnings.
+Issues and pull requests are welcome. Before sending a change, compile with `-Wall -Wextra -Wpedantic` (any recent `gcc` or `clang` accepts these) and make sure it produces no new warnings.
 
 ## License
 
