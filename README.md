@@ -2,7 +2,7 @@
 
 Matrix-style "digital rain" for your terminal, written in a single C file with no dependencies.
 
-<!-- Add a screenshot or GIF here, e.g. ![demo](demo.gif) -->
+![Termrain demo](Screenshot.png)
 
 ## Features
 
