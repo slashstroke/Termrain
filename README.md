@@ -1,4 +1,4 @@
-# matrix
+# Termrain
 
 Matrix-style "digital rain" for your terminal, written in a single C file with no dependencies.
 
